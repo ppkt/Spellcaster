@@ -1,0 +1,89 @@
+C----Zbior danych do programu Plyta_3D  ----------------------
+C    ******* UWAGA   *** Nie usuwac linii komentarza
+C
+{$EPS} EPS      dokladnosc rozwiazania pola tempeartury
+{$FLIMIT} FLIMIT   limit wywolan normy bledu lub 1.
+{$NTPR1} NTPR1    czas w minutach po ktorym ma byc pierwszy wydruk temperatury
+{$NTPR2} NTPR2    przyrost czasu w minutach dla kolejnych wydrukow temperatury
+{$NTPRE} NTPRE    czas po ktorym ma byc ostatni wydruk temperatury
+{$TAMB} TAMB     temperatura otoczenia, oC
+{$DTIME} DTIME    maksymalna dlugosc przyrostu czasu, s
+{$DTMIN} DTMIN    minimalna dlugosc przyrostu czasu,  s
+{$TINIT} TINIT    poczatkowa temperatura plyty, oC
+{$QPRZEM} QPRZEM   gestosc wewnetrznego zrodla ciepla,  W/m3
+{$RALFB1} RALFB1   wspolczynnik wymiany ciepla na powierzchni prostopadlej do X3                        |
+{$RALFB5} RALFB5   wspolczynnik wymiany ciepla na powierzchni prostopadlej do X2                     |
+{$T2SLE} T2SLE    czas procesu wymiany ciepla, s
+{$CEPWEL} CEPWEL   cieplo wlasciwe elementu ze zrodlem ciepla  J/m3/K|
+{$GESWEL} GESWEL   gestosc elementu ze zrodlem ciepla          kg/m3 |
+{$WLAWEL} WLAWEL   przew. cieplna elementu   ze zrodlem ciepla W/m/K |
+{$NSTPP} NSTPP    numer warstwy elementow ze zrodlem ciepla (kierunek  X1)                                                                    -------------
+{$NX1} NX1      liczba elementow w kierunku X1, grubosc    |
+{$NX2} NX2      liczba elementow w kierunku X2, szerokosc  |
+{$NX3} NX3      liczba elementow w kierunku X3, dlugosc    |
+{$DNP2} DNP2     calkowita liczba punktow interpolacji warunkow brzegowych
+C-----------------------------------------------------------------------
+C        X1 - wspolrzedne wezlow                      mm   -------------
+C Wezel No:  1,     2,    3,   ....,     NX1+1             -------------
+C---------   --   --   --  --  --   --   --  --   ----------------------
+  {$X1NODES}
+C-----------------------------------------------------------------------
+C        X2 - wspolrzedne wezlow                      mm   -------------
+C Wezel No:  1,     2,    3,   ....,     NX2+1             -------------
+C---------   --   --   --  --  --   --   --  --   ----------------------
+  {$X2NODES}
+C-----------------------------------------------------------------------
+C        X3 - wspolrzedne wezlow                      mm   -------------
+C Wezel No:  1,     2,    3,   ....,     NX3+1             -------------
+C---------   --   --   --  --  --   --   --  --   ----------------------
+  {$X3NODES}
+C-----------------------------------------------------------------------
+C        wspolrzedne punktow interp. temp. otoczenia    min. -----------
+C Punkt No:  1,     2,    3,   ....,    DNP2               -------------
+C---------   --   --   --  --  --   --   --  --   ----------------------
+  {$XNAD}
+C-----------------------------------------------------------------------
+C Wspolczynnik wymiany ciepla nad plyta   W/m2/K                      --
+C przedzial No: 1,  2,    3,   ....,    DNP2                ------------
+C-----------------------------------------------------------------------
+  {$YNAD}
+C-----------------------------------------------------------------------
+C Wspolczynnik wymiany ciepla i gestosc strumienia ciepla pod plyta   W/m2/K                      --
+C przedzial No: 1,  2,    3,   ....,    DNP2               ------------
+C-----------------------------------------------------------------------
+  {$WSPWYMC}
+  {$GESSTRC}
+C-----------------------------------------------------------------------
+C Temperatura otoczenia w punktach interp.  nad i pod plyta   C deg.  --
+C Punkt No:  1,     2,    3,   ....,    DNP2; 1, ..., DNP2 -------------
+C---------   --   --   --  --  --   --   --  --   ----------------------
+  {$TEMPNAD}
+  {$TEMPPOD}
+C-----------------------------------------------------------------------
+C Przewodnosc cieplna warstwy elementow          W/m/K       -----------
+C Element nr:  1,     2,    3,   ....,    NX1                -----------
+C---------   --   --   --  --  --   --   --  --   ----------------------
+  {$PRZEWODNOSC_WARSTW}
+C-----------------------------------------------------------------------
+C Gestosc materialu warstwy elementow            kg/m^3    -------------
+C Element nr:  1,     2,    3,   ....,    NX1               ------------
+C---------   --   --   --  --  --   --   --  --   ----------------------
+  {$GESTOSC_WARSTW}
+C-----------------------------------------------------------------------
+C Cieplo wlasciwe materialu warstwy elementow J/K*kg                  --
+C Element nr: 1,     2,    3,   ....,    Nx1;               ------------
+C---------   --   --   --  --  --   --   --  --   ----------------------
+  {$CIEPLO_WLASCIWE_WARSTW}
+C-----------------------------------------------------------------------
+C Kod elementu:   0 lub 1 jezeli w emencie jest zrodlo ciepla, lub mostek
+C Element nr: 1,     2,    3,   ....,    Nx2;               ------------
+C---------   --   --   --  --  --   --   --  --   ----------------------
+  {$MOSTEK}
+C-----------------------------------------------------------------------
+C Przewodnosc cieplna, cieplo wlasciwe i gestosc kulumny elementow mostka
+C Element nr: 1,     2,    3,   ....,    Nx2;               ------------
+C
+  {$PRZEWODNOSC_MOSTKA}
+  {$CIEPLO_WLASCIWE_MOSTKA}
+  {$GESTOSC_MOSTKA}
+C-END OF FILE-----------------------------------------------------------

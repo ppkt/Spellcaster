@@ -9,16 +9,21 @@ QT       += core gui
 TARGET = Spellcaster
 TEMPLATE = app
 
-CONFIG(debug, debug|release) {
-    LIBS    += -L"C:\\Users\\ppkt\\Desktop\\qwt-6.0.1\\lib" -lqwtd
+win32 {
+    CONFIG(debug, debug|release) {
+        LIBS    += -L"C:\\Users\\ppkt\\Desktop\\qwt-6.0.1\\lib" -lqwtd
+    }
+    
+    CONFIG(release, debug|release) {
+        LIBS    += -L"C:\\Users\\ppkt\\Desktop\\qwt-6.0.1\\lib" -lqwt
+    }
+    
+    INCLUDEPATH += "C:\\Users\\ppkt\\Desktop\\qwt-6.0.1\\src"
 }
-
-CONFIG(release, debug|release) {
-    LIBS    += -L"C:\\Users\\ppkt\\Desktop\\qwt-6.0.1\\lib" -lqwt
+unix {
+    INCLUDEPATH += /usr/include/qwt/
+    LIBS += -lqwt
 }
-
-INCLUDEPATH += "C:\\Users\\ppkt\\Desktop\\qwt-6.0.1\\src"
-
 SOURCES += main.cpp\
         spellcaster.cpp \
     parser.cpp \

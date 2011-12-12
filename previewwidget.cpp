@@ -131,7 +131,7 @@ void PreviewWidget::paintEvent(QPaintEvent *) {
 
 
     paint.begin(this);
-    paint.drawPicture(100, 100, pic);
+    paint.drawPicture(200, 200, pic);
     paint.end();
 }
 

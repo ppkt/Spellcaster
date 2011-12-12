@@ -68,15 +68,38 @@ Spellcaster::Spellcaster(QWidget *parent) :
     this->ppktAddX1(619.0, 1400, 840, 0.64);
     this->ppktAddX1(620.0, 1400, 840, 0.64);
 
+    /*
     this->ppktAddX2(0);
-    this->ppktAddX2(75);
+    this->ppktAddX2(10);
+    this->ppktAddX2(30);
+    this->ppktAddX2(50);
+    this->ppktAddX2(100);
     this->ppktAddX2(150);
-    this->ppktAddX2(225);
+    this->ppktAddX2(170);
+    this->ppktAddX2(190);
+    this->ppktAddX2(200);
 
     this->ppktAddX3(0);
-    this->ppktAddX3(75);
-    this->ppktAddX3(150);
-    this->ppktAddX3(225);
+    this->ppktAddX3(66);
+    this->ppktAddX3(133);
+    this->ppktAddX3(200);
+    */
+
+    this->ppktAddX2(0);
+    this->ppktAddX2(20);
+    this->ppktAddX2(60);
+    this->ppktAddX2(100);
+    this->ppktAddX2(200);
+    this->ppktAddX2(300);
+    this->ppktAddX2(340);
+    this->ppktAddX2(380);
+    this->ppktAddX2(400);
+
+    this->ppktAddX3(0);
+    this->ppktAddX3(133);
+    this->ppktAddX3(266);
+    this->ppktAddX3(400);
+
 
     this->ppktAddOther(0,   10, -10,  30, 0, 30);
     this->ppktAddOther(60,  10, -10,  30, 0, 30);
@@ -504,8 +527,15 @@ void Spellcaster::on_btnGenerate_clicked() {
 }
 
 void Spellcaster::on_btnBrowse_clicked() {
-    QString path = QFileDialog::getExistingDirectory(this, trUtf8("Wybierz katalog z plikami dat"),
+    QString path;
+#ifdef WINDOWS
+    path = QFileDialog::getExistingDirectory(this, trUtf8("Wybierz katalog z plikami dat"),
                                                     "D:\\AGH\\9 sem\\SIWE\\progs-spr1\\SIWE\\plyta_3d");
+#endif
+#ifdef unix
+    path = QFileDialog::getExistingDirectory(this, trUtf8("Wybierz katalog z plikami dat"),
+                                             "/media/Win1/AGH/9 sem/SIWE/progs-spr1/SIWE/plyta_3d");
+#endif
 
     if (path.isEmpty()) {
         return;
@@ -559,7 +589,7 @@ void Spellcaster::on_btnTempX1_clicked() {
         }
 
         QTextStream in(&file);
-        for (int j = 0; j < this->wspolrzedneX1.size() * 5; ++j) {
+        for (int j = 0; j < this->wspolrzedneX1.size() * 13; ++j) {
             in.readLine();
         }
         for (int j = 0; j < this->wspolrzedneX1.size(); ++j) {
